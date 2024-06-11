@@ -14,3 +14,5 @@ def create_speaker_panel():
             speaker_creator_ui()
         with gr.TabItem("Merger"):
             create_speaker_merger()
+        with gr.TabItem("allCreator"):
+            speaker_allcreator_ui()
