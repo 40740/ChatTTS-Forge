@@ -1,17 +1,8 @@
 import os
-from pytest import fixture, mark
-from fastapi.testclient import TestClient
+from pytest import mark
 
-from launch import create_api
 
 from modules.utils import constants
-
-app_instance = create_api()
-
-
-@fixture
-def client():
-    yield TestClient(app_instance.app)
 
 
 # 标记为参数化测试
@@ -19,16 +10,16 @@ def client():
     "path, method, status_code",
     [
         ("/v1/speakers/list", "GET", 200),
-        # ("/v1/speakers/update", "POST", 200),
+        ("/v1/speakers/refresh", "POST", 200),
     ],
 )
-@mark.speakers
+@mark.speakers_api
 def test_api_endpoints(client, path, method, status_code):
     response = client.request(method, path)
     assert response.status_code == status_code
 
 
-@mark.speakers
+@mark.speakers_api
 def test_create_speaker(client):
     data = {
         "name": "测试发言人",

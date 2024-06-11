@@ -91,10 +91,12 @@ def create_tts_interface():
                             )
 
                         with gr.Tab(label="Upload"):
-                            spk_file_upload = gr.File(label="Speaker (Upload)")
+                            spk_file_upload = gr.File(
+                                label="Speaker (Upload)", file_types=[".pt"]
+                            )
 
                             gr.Markdown("📝Speaker info")
-                            infos = gr.Markdown("empty")
+                            infos = gr.Markdown("empty", elem_classes=["no-translate"])
 
                             spk_file_upload.change(
                                 fn=load_spk_info,
