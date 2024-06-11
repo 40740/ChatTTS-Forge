@@ -48,11 +48,12 @@ def zip_files():
     return zip_path
 
 def batch_generate():
-    for _ in range(100):
-        seed = np_rng()
+    for i in range(1000):
+        seed = np_rng()i
         text = "大家要用发展的眼光看待自己，千万不能沉迷当下的低落"
         test_spk_voice(seed, text)
         create_spk_from_seed(seed, name=str(seed), gender="*", desc="")
+        print(i)
 
     return "批量生成完成！"
 
