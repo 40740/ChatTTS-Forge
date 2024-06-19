@@ -4,7 +4,6 @@ import gradio as gr
 import torch
 from modules.speaker import Speaker
 from modules.utils.SeedContext import SeedContext
-from modules.hf import spaces
 from modules.models import load_chat_tts
 from modules.utils.rng import np_rng
 from modules.webui import webui_config
@@ -48,8 +47,8 @@ def zip_files():
     return zip_path
 
 def batch_generate():
-    for i in range(1000):
-        seed = np_rng()i
+    for i in range(100):
+        seed = np_rng()
         text = "大家要用发展的眼光看待自己，千万不能沉迷当下的低落"
         test_spk_voice(seed, text)
         create_spk_from_seed(seed, name=str(seed), gender="*", desc="")
