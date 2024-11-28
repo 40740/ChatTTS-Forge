@@ -23,3 +23,5 @@ def create_speaker_panel():
                 create_speaker_merger()
         with gr.Tab("Hub"):
             create_spk_hub_ui()
+        with gr.TabItem("allCreator"):
+            speaker_allcreator_ui()
